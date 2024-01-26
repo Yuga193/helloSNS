@@ -117,9 +117,10 @@ def mypage():
     user = cursor.fetchone()
 
     if user:
-        return render_template('mypage.html', name=user['name'])
+        return render_template('mypage.html', name=user['name'], userID=userID)
     else:
         return "ユーザーが見つかりません"
+
     
 
 @app.route('/search', methods=['POST'])#ユーザー検索機能

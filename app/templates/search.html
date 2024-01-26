@@ -10,15 +10,17 @@
     </head>
     <body>
         <div class="h-screen bg-gradient-to-b from-red-200 to-teal-50 flex flex-col justify-center items-center">
-            <div class="p-4 border border-gray-300 shadow-md rounded-lg">
-                <h2 class="text-lg font-bold">名前: {{ user.name }}</h2>
-                <p class="text-md">ユーザーID: {{ user.userID }}</p>
+            <div class="p-4 border border-gray-300 shadow-md rounded-lg mt-6 bg-neutral-400">
+                <h2 class="text-center text-slate-100 text-2xl">名前: {{ user.name }}</h2>
+                <p class="text-center text-slate-100 text-2xl">ユーザーID: {{ user.userID }}</p>
                 <a href="{{ url_for('generate_chat_session', searched_user_id=user.userID) }}">
-                    <button class="...">メッセージを送る</button>
+                    <div style="display: flex; justify-content: center;">
+                        <button class="text-slate-600 px-4 py-2 mt-8 text-lg bg-green-200 text-lg font-semibold rounded hover:bg-green-300 hover:shadow-sm hover:translate-y-0.5 transform transition justify-center">メッセージを送る</button>
+                    </div>
                 </a>
             </div>
             <a href="{{ url_for('mypage') }}">
-                <button class="text-slate-600 px-4 py-2 mt-8 text-lg bg-teal-300 text-lg font-semibold rounded  hover:bg-teal-400 hover:shadow-sm hover:translate-y-0.5 transform transition">マイページに戻る</button>
+                <button class="px-4 py-2 mt-8 bg-gray-300 text-lg font-semibold rounded hover:bg-gray-400 transition">マイページに戻る</button>
             </a>
         </div>
     </body>

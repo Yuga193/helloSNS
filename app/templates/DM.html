@@ -21,7 +21,7 @@
                 {% for message in messages %}
                     <div class="{% if message.sender_id == current_user_id %}text-right{% else %}text-left{% endif %} m-2">
                         <div class="{% if message.sender_id == current_user_id %}bg-green-200 ml-auto{% else %}bg-white mr-auto{% endif %} p-4 rounded-lg" style="width: fit-content;">
-                            <p>{{ messages.content }}</p>
+                            <p>{{ message.content }}</p>
                         </div>
                         <div class="{% if message.sender_id == current_user_id %}text-right{% else %}text-left{% endif %} text-sm text-gray-600">
                             {{ message.timestamp }}

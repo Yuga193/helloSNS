@@ -12,9 +12,9 @@
     <div class="h-screen bg-gradient-to-b from-red-200 to-teal-50 flex flex-col justify-center items-center">
         <h1 class="text-6xl font-bold text-neutral-700 text-center">マイページ</h1>
         <h2 class="text-2xl font-bold text-neutral-700 text-center mt-4">話したい相手のユーザーIDを入力することでチャットすることができます</h2>
-        <div class="p-4 border border-gray-300 shadow-md rounded-lg mt-6">
-            <p class="text-center">名前</p>
-            <p class="text-center mb-4">{{ name }}</p>
+        <div class="p-4 border border-gray-300 shadow-md rounded-lg mt-6 bg-neutral-400">
+            <p class="text-center text-slate-100 text-2xl">名前: {{ name }}</p>
+            <p class="text-center text-slate-100 text-2xl">ID: {{ userID }}</p>
             <form action="{{ url_for('search') }}" method="post" class="flex flex-row mt-8">
                 <input type="text" name="search_term" class="flex rounded-s-md p-2" placeholder="ユーザーIDを入力">
                 <button type="submit" class="flex rounded-e-md items-center bg-white p-2">
