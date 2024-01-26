@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="jp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='src/style.css') }}">
+    <title>会員登録</title>
+</head>
+<body>
+    <div class="h-screen bg-gradient-to-b from-red-200 to-teal-50 flex flex-col justify-center items-center">
+    <form method="post" action="{{url_for('register')}}">
+        <p>ユーザーネーム<br>
+        <input class="border border-blue-400" type="text" name="name"></p>
+        <p>使用したいID<br>
+        <input class="border border-blue-400" type="text" name="userID"></p>
+        <p>使用したいパスワード<br>
+        <input class="border border-blue-400" type="text" name="password"></p>
+        <input type="submit" value="会員登録" class="text-slate-600 px-4 py-2 mt-8 ml-9 text-lg bg-teal-300 text-lg font-semibold rounded  hover:bg-teal-400 hover:shadow-sm hover:translate-y-0.5 transform transition">
+    </form>
+    <a href="/">
+        <button class="text-slate-600 px-4 py-2 mt-8 text-lg bg-teal-300 text-lg font-semibold rounded  hover:bg-teal-400 hover:shadow-sm hover:translate-y-0.5 transform transition">メインに戻る</button>
+    </a>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    <ul class="flashes">
+                    {% for category, message in messages %}
+                        <li class="mt-4 font-bold {{ category }}">{{ message }}</li>
+                    {% endfor %}
+                    </ul>
+                {% endif %}
+                {% endwith %}
+    </div>
+</body>
+</html>
+
+

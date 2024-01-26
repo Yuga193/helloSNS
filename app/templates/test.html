@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="jp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='src/style.css') }}">
+    <title>ようこそ</title>
+</head>
+<body>
+    <div class="h-screen bg-gradient-to-b from-red-200 to-teal-50 flex flex-col justify-center items-center">
+        <div class="text-center">
+            <h1 class="mb-4 text-6xl font-bold text-neutral-700">ダイレクトチャットにようこそ</h1>
+            <a href="/login" class="m-2">
+                <button class="text-slate-800 px-4 py-2 mt-8 mr-12 text-lg bg-teal-300 text-lg font-semibold rounded  hover:bg-teal-400 hover:shadow-sm hover:translate-y-0.5 transform transition">ログイン</button>
+            </a>
+            <a href="/user" class="m-2">
+                <button class="text-slate-600 px-4 py-2 mt-8 ml-12 text-lg bg-teal-300 text-lg font-semibold rounded  hover:bg-teal-400 hover:shadow-sm hover:translate-y-0.5 transform transition">会員登録</button>
+            </a>
+        </div>
+    </div>
+</body>
+</html>

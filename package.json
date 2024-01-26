@@ -1,0 +1,13 @@
+{
+  "name": "hellosns0",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "tailwindcss": "^3.2.0"
+  },
+  "scripts": {
+    "build": "npx tailwindcss -i ./app/static/src/style.css -o ./app/templates/style.css",
+    "watch": "npx tailwindcss -i ./app/static/src/style.css -o ./app/templates/style.css --watch"
+  }
+}

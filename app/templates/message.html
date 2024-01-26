@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="stylesheet" href="{{ url_for('static', filename='src/style.css') }}">
+        <title>メッセージ一覧</title>
+    </head>
+    <body class="font-sans">
+        <div class="h-screen bg-gradient-to-b from-red-200 to-teal-50">
+            <div class="p-4 border-b border-gray-200">
+                <a href="{{ url_for('mypage') }}">
+                    <button class="m-8 px-4 py-2 text-lg bg-yellow-300 text-black font-bold rounded hover:bg-yellow-400 hover:shadow-lg transform transition duration-300">マイページに戻る</button>
+                </a>
+                <h2 class="text-lg font-bold">{{ other_user_name }}</h2>
+            </div>
+            <h1 class="text-center text-4xl text-gray-800 font-bold mb-6">メッセージ一覧</h1>
+            <ul class="list-disc list-inside mx-4 my-8">
+                {% for message in messages %}
+                    <li class="bg-cyan-100 m-2 p-2 rounded shadow">
+                        <a href="{{ url_for('chat_page', chat_session_id=message.chat_session_id) }}" class="text-gray-700 hover:text-blue-500">
+                            {{ message.other_user_name }}: {{ message.content }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </body>
+</html>
