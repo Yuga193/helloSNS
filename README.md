@@ -15,28 +15,29 @@
 │   │   ├── app.cpython-311.pyc
 │   │   ├── main.cpython-311.pyc
 │   │   └── view.cpython-311.pyc
-│   ├── main.py(バックエンド管理)
+│   ├── main.py (バックエンド管理)
 │   ├── static
 │   │   └── src
-│   │       └── style.css(tailwindCSSで使用)
-│   └── templates(画面構成の管理)
-│       ├── DM.html
-│       ├── completion.html
-│       ├── login.html
-│       ├── message.html
-│       ├── mypage.html
-│       ├── search.html
-│       ├── style.css
-│       ├── test.html
-│       └── user.html
+│   │       └── style.css (tailwindCSSで使用)
+│   └── templates (画面構成の管理)
+│       ├── DM.html (個人チャットの画面)
+│       ├── completion.html (会員登録完了時の画面)
+│       ├── login.html (ログインフォーラムの画面)
+│       ├── message.html (送受信したメッセージを一覧表示する画面)
+│       ├── mypage.html (マイページの画面)
+│       ├── search.html (メッセージを送るユーザーを検索する画面)
+│       ├── style.css (tailwindCSSで使用)
+│       ├── test.html (メイン画面)
+│       └── user.html (会員登録のデータ入力フォーラムの画面)
 ├── node_modules
-├── database.db(データベース)
+├── database.db (データベース)
 ├── docker-compose.yaml
 ├── dockerfile
 ├── package-lock.json
 ├── package.json
-├── requirements.txt(dockerで使用)
+├── requirements.txt (dockerで使用)
 └── tailwind.config.js
+
 
 DB構成
 『users』(ユーザーデータを管理)
