@@ -7,6 +7,8 @@
 - tailwindCSS
 
 ## ファイル構造
+
+```
 ├── README.md  
 ├── app  
 │   ├── __pycache__  
@@ -37,25 +39,7 @@
 ├── package.json  
 ├── requirements.txt (dockerで使用)  
 └── tailwind.config.js  
-
-
-## DB構成
-### 『users』(ユーザーデータを管理)  
-ID(登録時に自動的に割り当てられる管理用のID)  
-name(そのユーザーの名前)  
-password(そのユーザーがログイン時に使用するパスワード)  
-userID(そのユーザーのID)  
-
-### 『Message』(送られたテキストが持つデータを管理)  
-id (そのテキストメッセージが持つID)  
-sender_id(テキストメッセージを送った人のuserID)※usersテーブルから取得  
-receiver_id(テキストメッセージを受け取った人のuserID)※usersテーブルから取得  
-send_name(テキストメッセージを送った人のname)※usersテーブルから取得  
-receiver_name (テキストメッセージを受け取った人のname)※usersテーブルから取得  
-chat_session_id(このテキストメッセージが存在する位置をIDとして管理)  
-content(テキストメッセージの内容)  
-timestamp DATETIME DEFAULT CURRENT_TIMESTAMP(テキストメッセージの送信日時)  
-
+```
 
 ## DB構成
 ### 『users』(ユーザーデータを管理)
