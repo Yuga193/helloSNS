@@ -194,9 +194,7 @@ def chat_page(chat_session_id):
         other_user_id = messages[0]['receiver_id'] if messages[0]['sender_id'] == current_user_id else messages[0]['sender_id']
         other_user_name = db.execute('SELECT name FROM users WHERE id = ?', (other_user_id,)).fetchone()['name']
 
-    print(chat_session_id)
-
-    return render_template('DM.html', messages=messages, other_user_name=other_user_name, current_user_id=current_user_id)
+    return render_template('DM.html', messages=messages, other_user_name=other_user_name, current_user_id=current_user_id, chat_session_id=chat_session_id )
 
 @app.route('/generate_chat_session/<searched_user_id>')
 def generate_chat_session(searched_user_id):

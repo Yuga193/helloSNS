@@ -21,7 +21,7 @@
                 {% for message in messages %}
                     <div class="{% if message.sender_id == current_user_id %}text-right{% else %}text-left{% endif %} m-2">
                         <div class="{% if message.sender_id == current_user_id %}bg-green-200 ml-auto{% else %}bg-white mr-auto{% endif %} p-4 rounded-lg" style="width: fit-content;">
-                            <p>{{ messages['content'] }}</p>
+                            <p>{{ messages.content }}</p>
                         </div>
                         <div class="{% if message.sender_id == current_user_id %}text-right{% else %}text-left{% endif %} text-sm text-gray-600">
                             {{ message.timestamp }}
@@ -32,6 +32,7 @@
             <div>
                 <section class="w-full bottom-0 relative">
                     <form action="{{ url_for('send_message', chat_session_id=chat_session_id) }}" method="post" class="flex items-end">
+                        <input type="hidden" name="chat_session_id" value="{{ chat_session_id }}">
                         <textarea class="border border-black flex-grow ml-4 mr-4 rounded-md" id="comment_body" name="content" rows="4" placeholder="メッセージを入力してください"></textarea>
                         <div class="fixed bottom-0 right-0 mr-7">
                             <button class="button-svg" type="submit">

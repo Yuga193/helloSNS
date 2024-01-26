@@ -1,41 +1,46 @@
 <!DOCTYPE html>
 <html lang="ja">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="https://cdn.tailwindcss.com"></script>
-        <link rel="stylesheet" href="{{ url_for('static', filename='src/style.css') }}">
-        <title>マイページ</title>
-    </head>
-    <body>
-        <div class="h-screen bg-gradient-to-b from-red-200 to-teal-50 flex flex-col justify-center items-center">
-        <h1>マイページ</h1>
-                <p>名前</p>
-                <p>{{ name }}</p>
-                <form action="{{ url_for('search') }}" method="post" class="flex flex-row mt-8">
-                    <input type="text" name="search_term" class="flex rounded-s-md p-2" placeholder="ユーザーIDを入力">
-                    <button type="submit" class="flex rounded-e-md items-center bg-white p-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
-                        </svg>
-                    </button>
-                </form>
-                <a href="{{ url_for('messages') }}">
-                    <button class="text-slate-600 px-4 py-2 mt-8 text-lg bg-teal-300 text-lg font-semibold rounded  hover:bg-teal-400 hover:shadow-sm hover:translate-y-0.5 transform transition">メッセージ一覧</button>
-                </a>
-                {% with messages = get_flashed_messages(with_categories=true) %}
-                {% if messages %}
-                    <ul class="flashes">
-                    {% for category, message in messages %}
-                        <li class="mt-4 font-bold {{ category }}">{{ message }}</li>
-                    {% endfor %}
-                    </ul>
-                {% endif %}
-                {% endwith %}
-                <a href="{{ url_for('logout') }}">
-                    <button class="text-slate-600 px-4 py-2 mt-8 text-lg bg-teal-300 text-lg font-semibold rounded  hover:bg-teal-400 hover:shadow-sm hover:translate-y-0.5 transform transition">ログアウト</button>
-                </a>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='src/style.css') }}">
+    <title>マイページ</title>
+</head>
+<body>
+    <div class="h-screen bg-gradient-to-b from-red-200 to-teal-50 flex flex-col justify-center items-center">
+        <h1 class="text-6xl font-bold text-neutral-700 text-center">マイページ</h1>
+        <h2 class="text-2xl font-bold text-neutral-700 text-center mt-4">話したい相手のユーザーIDを入力することでチャットすることができます</h2>
+        <div class="p-4 border border-gray-300 shadow-md rounded-lg mt-6">
+            <p class="text-center">名前</p>
+            <p class="text-center mb-4">{{ name }}</p>
+            <form action="{{ url_for('search') }}" method="post" class="flex flex-row mt-8">
+                <input type="text" name="search_term" class="flex rounded-s-md p-2" placeholder="ユーザーIDを入力">
+                <button type="submit" class="flex rounded-e-md items-center bg-white p-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                    </svg>
+                </button>
+            </form>
         </div>
-    </body>
+        <div class="mt-6">
+            <a href="{{ url_for('messages') }}" class="inline-block">
+                <button class="px-4 py-2 bg-teal-300 text-lg font-semibold rounded hover:bg-teal-400 transition">メッセージ一覧</button>
+            </a>
+            <a href="{{ url_for('logout') }}" class="inline-block ml-4">
+                <button class="px-4 py-2 bg-gray-300 text-lg font-semibold rounded hover:bg-gray-400 transition">ログアウト</button>
+            </a>
+        </div>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <ul class="flashes mt-4">
+            {% for category, message in messages %}
+                <li class="p-2 text-center font-bold {{ category }} bg-yellow-200 text-yellow-800 rounded-md">{{ message }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+        {% endwith %}
+    </div>
+</body>
 </html>
