@@ -189,13 +189,20 @@ def chat_page(chat_session_id):
 
     messages = db.execute('SELECT * FROM messages WHERE chat_session_id = ?', (chat_session_id,)).fetchall()
 
-    # 他のユーザーの名前を取得（チャットセッションにメッセージが存在する場合のみ）
-    other_user_name = None
+    other_user_id = None
+    # メッセージが存在する場合、最初のメッセージから相手のユーザーIDを取得
     if messages:
         other_user_id = messages[0]['receiver_id'] if messages[0]['sender_id'] == current_user_id else messages[0]['sender_id']
-        other_user_name = db.execute('SELECT name FROM users WHERE id = ?', (other_user_id,)).fetchone()['name']
+    else:
+        # セッションからチャットセッションIDを取得し、相手のIDを解析
+        ids = [int(i) for i in chat_session_id.split('_')]
+        other_user_id = min(ids) if current_user_id == max(ids) else max(ids)
 
-    return render_template('DM.html', messages=messages, other_user_name=other_user_name, current_user_id=current_user_id, chat_session_id=chat_session_id )
+    # 相手のユーザー名を取得
+    other_user_name = db.execute('SELECT name FROM users WHERE id = ?', (other_user_id,)).fetchone()['name']
+
+    return render_template('DM.html', messages=messages, other_user_name=other_user_name, current_user_id=current_user_id, chat_session_id=chat_session_id)
+
 
 @app.route('/generate_chat_session/<searched_user_id>')
 def generate_chat_session(searched_user_id):
@@ -213,6 +220,10 @@ def generate_chat_session(searched_user_id):
     # チャットセッションIDを生成してセッションに保存
     chat_session_id = '{}_{}'.format(min(current_user['id'], searched_user['id']), max(current_user['id'], searched_user['id']))
     session['chat_session_id'] = chat_session_id
+
+    # 相手ユーザーの名前を取得してセッションに保存
+    other_user_name = db.execute('SELECT name FROM users WHERE id = ?', (searched_user['id'],)).fetchone()['name']
+    session['other_user_name'] = other_user_name
 
     return redirect(url_for('chat_page', chat_session_id=chat_session_id))
 

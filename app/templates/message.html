@@ -21,7 +21,7 @@
                 {% for message in messages %}
                     <li class="bg-cyan-100 m-2 p-2 rounded shadow">
                         <a href="{{ url_for('chat_page', chat_session_id=message.chat_session_id) }}" class="text-gray-700 hover:text-blue-500">
-                            {{ message.other_user_name }}: {{ message.content }}
+                            <span class="font-bold">{{ message.other_user_name }} </span>: {{ message.content }}
                         </a>
                     </li>
                 {% endfor %}

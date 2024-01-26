@@ -1,1 +1,75 @@
 # helloSNS
+
+# helloSNS
+
+使用したフレームワーク
+- Flask
+- tailwindCSS
+
+## ファイル構造
+├── README.md
+├── app
+│   ├── __pycache__
+│   │   ├── DB.cpython-311.pyc
+│   │   ├── __init__.cpython-311.pyc
+│   │   ├── app.cpython-311.pyc
+│   │   ├── main.cpython-311.pyc
+│   │   └── view.cpython-311.pyc
+│   ├── main.py(バックエンド管理)
+│   ├── static
+│   │   └── src
+│   │       └── style.css(tailwindCSSで使用)
+│   └── templates(画面構成の管理)
+│       ├── DM.html
+│       ├── completion.html
+│       ├── login.html
+│       ├── message.html
+│       ├── mypage.html
+│       ├── search.html
+│       ├── style.css
+│       ├── test.html
+│       └── user.html
+├── node_modules
+├── database.db(データベース)
+├── docker-compose.yaml
+├── dockerfile
+├── package-lock.json
+├── package.json
+├── requirements.txt(dockerで使用)
+└── tailwind.config.js
+
+DB構成
+『users』(ユーザーデータを管理)
+ID(登録時に自動的に割り当てられる管理用のID)
+name(そのユーザーの名前)
+password(そのユーザーがログイン時に使用するパスワード)
+userID(そのユーザーのID) 
+
+『Message』(送られたテキストが持つデータを管理)
+id (そのテキストメッセージが持つID)
+sender_id(テキストメッセージを送った人のuserID)※usersテーブルから取得
+receiver_id(テキストメッセージを受け取った人のuserID)※usersテーブルから取得
+send_name(テキストメッセージを送った人のname)※usersテーブルから取得
+receiver_name (テキストメッセージを受け取った人のname)※usersテーブルから取得
+chat_session_id(このテキストメッセージが存在する位置をIDとして管理)
+content(テキストメッセージの内容)
+timestamp DATETIME DEFAULT CURRENT_TIMESTAMP(テキストメッセージの送信日時)
+
+
+## DB構成
+### 『users』(ユーザーデータを管理)
+- ID: 登録時に自動的に割り当てられる管理用のID
+- name: そのユーザーの名前
+- password: そのユーザーがログイン時に使用するパスワード
+- userID: そのユーザーのID
+
+### 『Message』(送られたテキストが持つデータを管理)
+- id: そのテキストメッセージが持つID
+- sender_id: テキストメッセージを送った人のuserID (※usersテーブルから取得)
+- receiver_id: テキストメッセージを受け取った人のuserID (※usersテーブルから取得)
+- send_name: テキストメッセージを送った人のname (※usersテーブルから取得)
+- receiver_name: テキストメッセージを受け取った人のname (※usersテーブルから取得)
+- chat_session_id: このテキストメッセージが存在する位置をIDとして管理
+- content: テキストメッセージの内容
+- timestamp: DATETIME DEFAULT CURRENT_TIMESTAMP (テキストメッセージの送信日時)
+
